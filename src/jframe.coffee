@@ -1,6 +1,8 @@
 class JFrame
-  constructor: (@title) ->
-  
+  constructor: (title) ->
+    @_title = title
+    this
+
   show = ->
     alert("show")
 
@@ -11,4 +13,20 @@ class JFrame
     else
       @_visible = v
       show()
+
+  _title: ""
+  title: (v) ->
+    if v is undefined
+      @_title
+    else
+      @_title = v
+      this
+
+  _baseClass: "body"
+  baesClass: (v) ->
+    if v is undefined
+      @_baseClass
+    else
+      @_baseClass = v
+      this
       
