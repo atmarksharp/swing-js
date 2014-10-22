@@ -1,0 +1,37 @@
+@import "font-awesome-4.2.0/css/font-awesome.min.css"
+
+radius = 5px
+box_shadow_params = 2px 2px 2px #999
+
+border-radius(args...)
+  -webkit-border-radius args
+  -moz-border-radius args
+  -o-border-radius args
+  border-radius args
+
+box-shadow(args...)
+   -webkit-box-shadow args
+   -moz-box-shadow args
+   -o-border-radius args
+   box-shadow args
+
+.jframe
+  background #eaeaea
+  border-radius(radius)
+  box-shadow(box_shadow_params)
+
+.jframe-header
+  background #cdcdcd
+  border-radius(radius,radius,0,0)
+  text-align center
+  overflow hidden
+  color #666
+  font-size 11pt
+
+.jframe-header .close-button
+  float right
+  cursor pointer
+  color #fff
+  background #aaa
+  font-size 12pt
+  padding 2px

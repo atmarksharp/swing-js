@@ -1,8 +1,10 @@
+var jframe;
+
 Swing.ready(function(){
-  var jframe = new JFrame()
+  jframe = new JFrame();
   jframe
     .title("hello")
-    .size("200px","200px")
+    .size("300px","200px")
     .visible(true)
-})
+});
 
