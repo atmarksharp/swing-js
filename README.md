@@ -4,7 +4,7 @@ Java Swing API for JavaScript on Modern Browsers
 
 ## Status
 
-**Rate**: S - F &nbsp;&nbsp;(S is best, F is worst)
+**Rate**: S,A,B,C ... F &nbsp;&nbsp;(S is best, F is worst)
 
 |Component|Rate|
 |----|----|
