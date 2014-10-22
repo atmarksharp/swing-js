@@ -1,6 +1,7 @@
 class JComponent
   constructor: ->
     @element = null
+    @id = JComponent.generateId()
 
   @generateId = ->
     '' + Math.ceil(Math.random()*1e12)

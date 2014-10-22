@@ -1,10 +1,11 @@
 class JFrame extends JComponent
   @list = {}
   @children = {}
+  @childrenNodes = {}
 
   constructor: (title) ->
     super
-    @id = JComponent.generateId()
+    # @id = JComponent.generateId()
     JFrame.list[@id] = this
 
     @_title = title
@@ -68,6 +69,13 @@ class JFrame extends JComponent
           _.setAttribute("id", "jframe-contentpane-#{that.id}")
           _.setAttribute("class", "jframe-contentpane")
           _.setAttribute("style", "width: calc(100% - 20px); height: calc(100% - 10px); margin: 0 10px;")
+          
+          mgn = document.createElement("div")
+          mgn.setAttribute("id", "jframe-content-margin-#{that.id}")
+          mgn.setAttribute("class", "jframe-content-margin")
+          mgn.setAttribute("style", "width: 100%; height: 20px; margin:0;")
+
+          _.appendChild(mgn)
           return _
         )(that,document.createElement("div"))
 
@@ -151,9 +159,25 @@ class JFrame extends JComponent
 
   add: (component) ->
     JFrame.children[component.id] = component
+    JFrame.childrenNodes[component.id] = component.element
     @contentPane.appendChild(component.element)
+    component.addNotify(this)
+    this
 
   remove: (component) ->
+    @contentPane.removeChild(JFrame.childrenNodes[component.id])
     delete JFrame.children[component.id]
+    this
+
+  update: (component) ->
+    @remove(component)
+    @add(component)
+    # i = 0
+    # nodes = @contentPane.childNodes
+    # while i < nodes.length
+    #   break if nodes[i] is component
+    #   i += 1
+    # @contentPane.childNodes[i] = component
+
 
       
