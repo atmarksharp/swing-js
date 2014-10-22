@@ -16,11 +16,15 @@ box-shadow(args...)
    box-shadow args
 
 .jframe
+  position relative
   background #eaeaea
   border-radius(radius)
   box-shadow(box_shadow_params)
 
 .jframe-header
+  position absolute
+  left 0
+  top 0
   background #cdcdcd
   border-radius(radius,radius,0,0)
   text-align center
@@ -35,3 +39,5 @@ box-shadow(args...)
   background #aaa
   font-size 12pt
   padding 2px
+
+.jframe-contentpane

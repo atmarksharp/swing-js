@@ -16,7 +16,9 @@ swing_ready = (->
   includeAll = (jsFiles) ->
     include(f) for f in jsFiles
 
-  includeAll ["jframe.js"]
+  ##############################################
+  includeAll ["jcomponent.js","jframe.js","jlabel.js"]
+  ##############################################
 
   DOMReady = (a,b,c) ->
     b = document

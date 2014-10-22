@@ -1,10 +1,8 @@
-class JFrame extends JComponent
+class JFrame
   @list = {}
-  @children = {}
 
   constructor: (title) ->
-    super
-    @id = JComponent.generateId()
+    @id = generateId()
     JFrame.list[@id] = this
 
     @_title = title
@@ -16,11 +14,13 @@ class JFrame extends JComponent
     @windowCloseListeners = []
     @width = "100%"
     @height = "100%"
+    @element = null
     @header = null
-    @contentPane = null
 
     createWindow(this)
     this
+
+  generateId = -> '' + Math.ceil(Math.random()*1e12)
 
   refreshHeader = (_, header) -> 
     div = header || _.header
@@ -63,16 +63,7 @@ class JFrame extends JComponent
           return _
         )(that,document.createElement("div"))
 
-      that.contentPane = 
-        ((that,_) ->
-          _.setAttribute("id", "jframe-contentpane-#{that.id}")
-          _.setAttribute("class", "jframe-contentpane")
-          _.setAttribute("style", "width: calc(100% - 20px); height: calc(100% - 10px); margin: 0 10px;")
-          return _
-        )(that,document.createElement("div"))
-
       that.element = div
-      that.element.appendChild(that.contentPane)
       that.element.appendChild(that.header)
 
   visible: (v) ->
@@ -148,12 +139,4 @@ class JFrame extends JComponent
       createWindow(this)
       @_parentSelector = v
       this
-
-  add: (component) ->
-    JFrame.children[component.id] = component
-    @contentPane.appendChild(component.element)
-
-  remove: (component) ->
-    delete JFrame.children[component.id]
-
       
